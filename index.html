@@ -1,0 +1,545 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Absensi QR Code</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Library QR Scanner -->
+    <script src="https://unpkg.com/html5-qrcode"
+            type="text/javascript">
+    </script>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HALAMAN UTAMA
+================================================== -->
+
+<section id="homePage" class="page">
+
+    <div class="card home-card">
+
+        <div class="logo">
+            📚
+        </div>
+
+        <h1>
+            ABSENSI SISWA
+        </h1>
+
+        <p>
+            Sistem Absensi QR Code
+        </p>
+
+
+        <button
+            class="btn primary"
+            onclick="showStudentPage()">
+
+            📷
+            <span>HALAMAN SISWA</span>
+
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="showRolePage()">
+
+            👨‍🏫
+            <span>GURU / ADMIN</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     HALAMAN SISWA
+================================================== -->
+
+<section id="studentPage"
+         class="page"
+         style="display:none;">
+
+    <div class="card scanner-card">
+
+        <button
+            class="back-button"
+            onclick="goHome()">
+
+            ← Kembali
+
+        </button>
+
+
+        <h2>
+            📷 ABSENSI SISWA
+        </h2>
+
+
+        <p>
+            Arahkan kamera ke QR Code siswa
+        </p>
+
+
+        <div id="reader"></div>
+
+
+        <div id="scanResult"
+             class="result-box">
+
+            Kamera sedang disiapkan...
+
+        </div>
+
+
+        <button
+            id="restartScannerBtn"
+            class="btn primary"
+            style="display:none;"
+            onclick="restartScanner()">
+
+            📷 SCAN LAGI
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PILIHAN GURU / ADMIN
+================================================== -->
+
+<section id="rolePage"
+         class="page"
+         style="display:none;">
+
+    <div class="card">
+
+        <button
+            class="back-button"
+            onclick="goHome()">
+
+            ← Kembali
+
+        </button>
+
+
+        <h2>
+            👨‍🏫 GURU / ADMIN
+        </h2>
+
+
+        <p>
+            Pilih akses yang ingin digunakan
+        </p>
+
+
+        <button
+            class="btn primary"
+            onclick="showGuruPage()">
+
+            👨‍🏫
+            <span>HALAMAN GURU</span>
+
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="showLoginPage()">
+
+            🔐
+            <span>LOGIN ADMIN</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     HALAMAN GURU
+================================================== -->
+
+<section id="guruPage"
+         class="page"
+         style="display:none;">
+
+    <div class="card dashboard-card">
+
+        <button
+            class="back-button"
+            onclick="goHome()">
+
+            ← Kembali
+
+        </button>
+
+
+        <h2>
+            👨‍🏫 MONITORING ABSENSI
+        </h2>
+
+
+        <p id="guruStatus">
+            Memuat data...
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            No
+                        </th>
+
+                        <th>
+                            Nama
+                        </th>
+
+                        <th>
+                            No Absen
+                        </th>
+
+                        <th>
+                            Waktu
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="guruTable">
+
+                    <tr>
+
+                        <td colspan="4">
+                            Memuat...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     LOGIN ADMIN
+================================================== -->
+
+<section id="loginPage"
+         class="page"
+         style="display:none;">
+
+    <div class="card login-card">
+
+        <button
+            class="back-button"
+            onclick="showRolePage()">
+
+            ← Kembali
+
+        </button>
+
+
+        <div class="login-icon">
+            🔐
+        </div>
+
+
+        <h2>
+            LOGIN ADMIN
+        </h2>
+
+
+        <p>
+            Masukkan username dan password
+        </p>
+
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+            autocomplete="username">
+
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            autocomplete="current-password">
+
+
+        <button
+            class="btn primary"
+            onclick="loginAdmin()">
+
+            LOGIN
+
+        </button>
+
+
+        <div id="loginMessage"
+             class="message">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     DASHBOARD ADMIN
+================================================== -->
+
+<section id="adminPage"
+         class="page"
+         style="display:none;">
+
+    <div class="card dashboard-card">
+
+        <button
+            class="back-button"
+            onclick="logoutAdmin()">
+
+            ← Logout
+
+        </button>
+
+
+        <h2>
+            📊 DASHBOARD ADMIN
+        </h2>
+
+
+        <p>
+            Rekap kehadiran hari ini
+        </p>
+
+
+        <!-- KARTU STATISTIK -->
+
+        <div class="stats">
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div
+                    id="totalSiswa"
+                    class="stat-number">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    Total Siswa
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div
+                    id="jumlahHadir"
+                    class="stat-number">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    Hadir
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    ❌
+                </div>
+
+                <div
+                    id="jumlahTidakHadir"
+                    class="stat-number">
+
+                    0
+
+                </div>
+
+                <div class="stat-label">
+                    Tidak Hadir
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    📈
+                </div>
+
+                <div
+                    id="persentase"
+                    class="stat-number">
+
+                    0%
+
+                </div>
+
+                <div class="stat-label">
+                    Kehadiran
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DIAGRAM BATANG -->
+
+        <div class="chart-section">
+
+            <h3>
+                📊 DIAGRAM KEHADIRAN
+            </h3>
+
+
+            <div class="bar-chart">
+
+                <div class="bar-item">
+
+                    <div class="bar-value"
+                         id="barHadirValue">
+
+                        0
+
+                    </div>
+
+                    <div
+                        class="bar hadir"
+                        id="barHadir">
+
+                    </div>
+
+                    <div class="bar-label">
+                        HADIR
+                    </div>
+
+                </div>
+
+
+                <div class="bar-item">
+
+                    <div class="bar-value"
+                         id="barTidakHadirValue">
+
+                        0
+
+                    </div>
+
+                    <div
+                        class="bar tidak-hadir"
+                        id="barTidakHadir">
+
+                    </div>
+
+                    <div class="bar-label">
+                        TIDAK HADIR
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DAFTAR SISWA HADIR -->
+
+        <div class="attendance-section">
+
+            <h3>
+                👥 SISWA YANG SUDAH HADIR
+            </h3>
+
+
+            <div
+                id="adminAttendanceList"
+                class="attendance-list">
+
+                Memuat data...
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
+```

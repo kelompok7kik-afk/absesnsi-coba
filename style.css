@@ -1,0 +1,682 @@
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #006eff 0%,
+            #004080 35%,
+            #001b35 70%,
+            #000000 100%
+        );
+
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card {
+
+    width: 100%;
+
+    max-width: 480px;
+
+    padding: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.45);
+
+    backdrop-filter:
+        blur(15px);
+
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+.home-card {
+
+    text-align: center;
+
+}
+
+
+.logo {
+
+    font-size: 55px;
+
+    margin-bottom: 10px;
+
+}
+
+
+h1 {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+
+}
+
+
+h2 {
+
+    text-align: center;
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+
+}
+
+
+h3 {
+
+    margin-bottom: 18px;
+
+}
+
+
+p {
+
+    text-align: center;
+
+    color: #d9ecff;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.btn {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    margin-top: 12px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    opacity: 0.9;
+
+}
+
+
+.primary {
+
+    background:
+        linear-gradient(
+            90deg,
+            #008cff,
+            #005bea
+        );
+
+}
+
+
+.secondary {
+
+    background:
+        linear-gradient(
+            90deg,
+            #005cbf,
+            #002b55
+        );
+
+}
+
+
+.back-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #cce7ff;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================
+   SCANNER
+========================================= */
+
+.scanner-card {
+
+    max-width: 500px;
+
+}
+
+
+#reader {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: #000;
+
+}
+
+
+#reader video {
+
+    border-radius: 15px;
+
+}
+
+
+.result-box {
+
+    min-height: 70px;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.login-card {
+
+    max-width: 400px;
+
+}
+
+
+.login-icon {
+
+    text-align: center;
+
+    font-size: 45px;
+
+    margin-bottom: 10px;
+
+}
+
+
+input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 16px;
+
+}
+
+
+.message {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard-card {
+
+    max-width: 900px;
+
+}
+
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+}
+
+
+.stat-box {
+
+    padding: 18px 10px;
+
+    text-align: center;
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    border-radius: 15px;
+
+}
+
+
+.stat-icon {
+
+    font-size: 25px;
+
+}
+
+
+.stat-number {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin-top: 8px;
+
+}
+
+
+.stat-label {
+
+    font-size: 13px;
+
+    color: #cce5ff;
+
+    margin-top: 5px;
+
+}
+
+
+/* =========================================
+   CHART
+========================================= */
+
+.chart-section {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+.bar-chart {
+
+    height: 280px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 70px;
+
+    padding:
+        20px 20px 0;
+
+}
+
+
+.bar-item {
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    width: 100px;
+
+}
+
+
+.bar {
+
+    width: 65px;
+
+    min-height: 5px;
+
+    border-radius:
+        10px 10px 0 0;
+
+    transition:
+        height 0.5s;
+
+}
+
+
+.bar.hadir {
+
+    background:
+        #00d084;
+
+}
+
+
+.bar.tidak-hadir {
+
+    background:
+        #ff5252;
+
+}
+
+
+.bar-value {
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+}
+
+
+.bar-label {
+
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================
+   ATTENDANCE LIST
+========================================= */
+
+.attendance-section {
+
+    margin-top: 25px;
+
+}
+
+
+.attendance-list {
+
+    max-height: 350px;
+
+    overflow-y: auto;
+
+}
+
+
+.attendance-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 13px;
+
+    margin-bottom: 8px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+.attendance-name {
+
+    font-weight: bold;
+
+}
+
+
+.attendance-time {
+
+    font-size: 13px;
+
+    color: #bcdcff;
+
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-container {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 20px;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 600px;
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+th,
+td {
+
+    padding: 12px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    text-align: left;
+
+}
+
+
+th {
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .dashboard-card {
+
+        padding: 20px;
+
+    }
+
+
+    .bar-chart {
+
+        gap: 35px;
+
+    }
+
+
+    .bar {
+
+        width: 55px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .page {
+
+        padding: 12px;
+
+    }
+
+
+    .card {
+
+        padding: 20px;
+
+        border-radius: 20px;
+
+    }
+
+
+    h1 {
+
+        font-size: 25px;
+
+    }
+
+
+    h2 {
+
+        font-size: 22px;
+
+    }
+
+}
